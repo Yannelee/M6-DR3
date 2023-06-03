@@ -1,28 +1,41 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Games 
+      title="Tienda Bit-Game" 
+      :gameList="games"
+      @delete='rmvGame'
+      >
+    </Games>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Games from '@/components/Games.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Games
+  },
+  data: function(){
+    return{
+      games: [
+        "Arena of valor", 
+        "Pokemon Unite", 
+        "Donkey Kong", 
+        "Heroes of the storm", 
+        "Valorant"
+      ]
+    }
+  },
+  methods:{
+    rmvGame(index){
+      this.games.splice(index,1)
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
